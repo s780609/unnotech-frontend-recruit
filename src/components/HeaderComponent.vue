@@ -1,7 +1,12 @@
 <template>
   <div class="header">
+    <span v-if="title === '新增書本'" class="back" v-on:click="handleBack"
+      >back</span
+    >
     {{ title }}
-    <span v-if="title!=='新增書本'" class="add" v-on:click="handleClick">+</span>
+    <span v-if="title !== '新增書本'" class="add" v-on:click="handleClick"
+      >+</span
+    >
   </div>
 </template>
 
@@ -22,9 +27,14 @@ export default {
       router.push("/add");
     };
 
+    const handleBack = () => {
+      router.push("/");
+    };
+
     return {
       title: props.titleProperty,
       handleClick,
+      handleBack,
     };
   },
 };
@@ -42,6 +52,11 @@ export default {
   float: right;
   margin-right: 10%;
   color: blue;
+  cursor: pointer;
+}
+
+.back {
+  float: left;
   cursor: pointer;
 }
 </style>
