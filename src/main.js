@@ -13,8 +13,8 @@ import AddPage from "./components/AddPage.vue";
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
-  { path: "/", component: HomePage },
-  { path: "/add", component: AddPage },
+  { path: "/", name: "HomePage", component: HomePage },
+  { path: "/add", name: "AddPage", component: AddPage },
 ];
 
 // 3. Create the router instance and pass the `routes` option

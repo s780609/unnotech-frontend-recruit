@@ -1,7 +1,7 @@
 <template>
-  <HeaderComponent v-on:add="add"></HeaderComponent>
+  <HeaderComponent v-on:add="add" v-bind:titleProperty="list"></HeaderComponent>
   <div class="content">
-    <div>{{ a }}</div>
+    <div>{{ list }}</div>
   </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ export default {
     HeaderComponent: HeaderComponent,
   },
   setup() {
-    const a = "a";
+    const list = "書籍列表";
 
     const add = (value) => {
       console.log("add", value);
@@ -27,7 +27,7 @@ export default {
     }
 
     return {
-      a,
+      list,
       add,
       onBeforeUpdate,
     };

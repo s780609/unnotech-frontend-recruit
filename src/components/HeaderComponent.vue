@@ -1,18 +1,21 @@
 <template>
   <div class="header">
-    書本列表
-    <span class="add" v-on:click="handleClick">+</span>
+    {{ title }}
+    <span v-if="title!=='新增書本'" class="add" v-on:click="handleClick">+</span>
   </div>
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
 export default {
   name: "HeaderComponent",
+  props: {
+    titleProperty: String,
+  },
   setup(props, { emit }) {
-    const router = useRouter()
-    //const route = useRoute()
+    console.log(props.titleProperty);
+    const router = useRouter();
 
     const handleClick = () => {
       emit("add", "add");
@@ -20,6 +23,7 @@ export default {
     };
 
     return {
+      title: props.titleProperty,
       handleClick,
     };
   },

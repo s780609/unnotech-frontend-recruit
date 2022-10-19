@@ -1,16 +1,13 @@
 <template>
-  <HomePage msg="Welcome to Your Vue.js App"/>
+  <router-view />
 </template>
 
 <script>
-import HomePage from './components/HomePage.vue'
-
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HomePage: HomePage
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -22,7 +19,8 @@ export default {
   padding: 0;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
