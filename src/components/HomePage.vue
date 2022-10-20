@@ -1,11 +1,23 @@
 <template>
-  <HeaderComponent v-on:add="add" v-bind:titleProperty="list"></HeaderComponent>
+  <HeaderComponent
+    v-on:add="add"
+    v-bind:titleProperty="bookListTitle"
+  ></HeaderComponent>
   <div class="content">
-    <div>{{ list }}</div>
+    <b-row>
+      <BookComponent
+        v-for="book in books.value"
+        :key="book.id"
+        :book="book"
+      ></BookComponent
+    ></b-row>
   </div>
 </template>
 <script>
+import { reactive, onBeforeUpdate } from "vue";
+
 import HeaderComponent from "./HeaderComponent";
+import BookComponent from "./BookComponent";
 
 export default {
   name: "HomePage",
@@ -13,23 +25,43 @@ export default {
     msg: String,
   },
   components: {
-    HeaderComponent: HeaderComponent,
+    HeaderComponent,
+    BookComponent,
   },
   setup() {
-    const list = "書籍列表";
+    const bookListTitle = "書籍列表";
 
-    const add = (value) => {
+    const books = reactive([]);
+
+    async function add(value) {
       console.log("add", value);
-    };
-
-    function onBeforeUpdate() {
-      console.log("onBeforeUpdate");
     }
 
+    async function getBooks() {
+      try {
+        const response = await fetch(
+          "https://fe-interview-api.unnotech.com/books"
+        );
+        if (response) {
+          books.value = await response.json();
+          console.log(books.value);
+        }
+      } catch (error) {
+        console.error(error);
+        alert(error.message);
+      }
+    }
+
+    onBeforeUpdate(() => {
+      console.log("onBeforeUpdate");
+    });
+
+    getBooks();
+
     return {
-      list,
+      bookListTitle,
+      books,
       add,
-      onBeforeUpdate,
     };
   },
 };
