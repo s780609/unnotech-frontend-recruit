@@ -1,6 +1,6 @@
 <template>
-  <b-col>
-    <b-card :title="title" style="max-width: 20rem;">
+  <!-- <div class="book"> -->
+    <b-card :title="title" class="bookCard">
       <b-card-text>
         {{ author }}
       </b-card-text>
@@ -8,7 +8,7 @@
         {{ description }}
       </b-card-text>
     </b-card>
-  </b-col>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -27,4 +27,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.book {
+  width: 20rem;
+  height: 25rem;
+  text-align: center;
+  background-color: white;
+  margin: 0.5rem;
+  padding: 0;
+  flex: 1 0 40%;
+}
+.bookCard {
+  width: 20rem;
+  height: 25rem;
+  text-align: center;
+  background-color: white;
+  margin: 0.5rem;
+  padding: 0;
+  flex: 1 0 40%;
+  border: transparent;
+}
+</style>

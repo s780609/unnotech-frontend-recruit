@@ -4,13 +4,15 @@
     v-bind:titleProperty="bookListTitle"
   ></HeaderComponent>
   <div class="content">
-    <b-row>
-      <BookComponent
-        v-for="book in books.value"
-        :key="book.id"
-        :book="book"
-      ></BookComponent
-    ></b-row>
+    <b-container>
+      <div style="max-width: 60rem; text-align: center; display: flex; flex-wrap: wrap;">
+        <BookComponent
+          v-for="book in books.value"
+          :key="book.id"
+          :book="book"
+        ></BookComponent>
+      </div>
+    </b-container>
   </div>
 </template>
 <script>
@@ -52,11 +54,11 @@ export default {
       }
     }
 
+    getBooks();
+
     onBeforeUpdate(() => {
       console.log("onBeforeUpdate");
     });
-
-    getBooks();
 
     return {
       bookListTitle,
@@ -70,6 +72,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .content {
-  background-color: #898989;
+  background-color: #d3d3d3;
 }
 </style>
