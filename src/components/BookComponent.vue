@@ -18,7 +18,6 @@ export default {
   name: "BookComponent",
   props: ["book"],
   setup(props) {
-    console.log(props.book);
     const title = reactive(props.book.title);
     const author = reactive(props.book.author);
     const description = reactive(props.book.description);
