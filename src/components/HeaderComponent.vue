@@ -27,7 +27,7 @@ export default {
 
     const bookId = ref(props.bookIdProperty);
     const title = ref(props.titleProperty);
-
+    
     const handleAdd = () => {
       emit("add", "add");
       router.push("/add");
