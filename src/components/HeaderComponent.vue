@@ -1,39 +1,56 @@
 <template>
   <div class="header">
-    <span v-if="title === '新增書本'" class="back" v-on:click="handleBack"
+    <span v-if="pageType !== 'list'" class="back" v-on:click="handleBack"
       >back</span
     >
     {{ title }}
-    <span v-if="title !== '新增書本'" class="add" v-on:click="handleClick"
-      >+</span
+    <span v-if="pageType === 'list'" class="add" v-on:click="handleAdd">+</span>
+    <span v-if="pageType === 'detail'" class="detail" v-on:click="handleEdit"
+      >Edit</span
     >
   </div>
 </template>
 
 <script>
+import { onBeforeUpdate, ref } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
   name: "HeaderComponent",
   props: {
     titleProperty: String,
+    pageTypeProperty: String,
+    bookIdProperty: String,
   },
   setup(props, { emit }) {
-    console.log(props.titleProperty);
     const router = useRouter();
 
-    const handleClick = () => {
+    const bookId = ref(props.bookIdProperty);
+    const title = ref(props.titleProperty);
+
+    const handleAdd = () => {
       emit("add", "add");
       router.push("/add");
+    };
+
+    const handleEdit = () => {
+      router.push(`/edit/${bookId.value}`);
     };
 
     const handleBack = () => {
       router.push("/");
     };
 
+    onBeforeUpdate(() => {
+      title.value = props.titleProperty;
+    });
+
     return {
-      title: props.titleProperty,
-      handleClick,
+      pageType: props.pageTypeProperty,
+      bookId,
+      title,
+      handleAdd,
+      handleEdit,
       handleBack,
     };
   },
@@ -52,6 +69,12 @@ export default {
   float: right;
   margin-right: 10%;
   color: blue;
+  cursor: pointer;
+}
+
+.detail {
+  float: right;
+  margin-right: 10%;
   cursor: pointer;
 }
 

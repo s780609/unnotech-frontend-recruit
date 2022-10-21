@@ -6,15 +6,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 import App from "./App.vue";
-import HomePage from "./components/BookListPage.vue";
+import BookListPage from "./components/BookListPage.vue";
 import AddPage from "./components/AddPage.vue";
+import BookDetailPage from "./components/BookDetailPage.vue";
 
 // 2. Define some routes
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
-  { path: "/", name: "HomePage", component: HomePage },
+  { path: "/", name: "BookListPage", component: BookListPage },
   { path: "/add", name: "AddPage", component: AddPage },
+  { path: "/detail/:id", name: "BookDetailPage", component: BookDetailPage },
 ];
 
 // 3. Create the router instance and pass the `routes` option
