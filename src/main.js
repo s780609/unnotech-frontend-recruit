@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 import App from "./App.vue";
-import HomePage from "./components/HomePage.vue";
+import HomePage from "./components/BookListPage.vue";
 import AddPage from "./components/AddPage.vue";
 
 // 2. Define some routes
