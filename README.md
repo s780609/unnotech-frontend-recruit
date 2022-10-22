@@ -64,12 +64,12 @@ const routes = [
 * `bootstrap` => 因為對這個UI套件最簡單，資源也最好找，而且自己刻CSS很累
 * `bootstrap-vue-3` => 為了快速配合 Vue 使用
 * `vue-router` => 為了方便切換頁面，本來是想使用 `window.hashChange()` 之類的 JS 原生語法來自己實作切換頁面，不過想想 還是用別人寫好的好了，比較快，也不容易出錯
-* Google fonts => 因為懶得自己去刻 返回 和 編輯 的 按鈕，所以使用這個icon (https://fonts.google.com/icons)
+* `Google fonts` => 因為懶得自己去刻 返回 和 編輯 的 按鈕，所以使用這個icon (https://fonts.google.com/icons)
 
 
 ## 遇到的困難以及如何解決
 1. `Vue3` 的 `ref()` 和 `reactive()` 一開始搞不太清楚，後來看到[ref vs reactive in Vue 3?][1]，才比較理解這兩者區別
-2. 因為我是統一用 common.js(自己寫的)，所以在做錯誤處理的時候，在想應該怎麼做比較好，後來是統一用 `console.error(error);`，然後都用 `try catch` 包起來
+2. 因為我是統一用 common.js(自己寫的)來對API請求，所以在做錯誤處理的時候，在想應該怎麼做比較好，後來是統一用 `console.error(error);`，然後都用 `try catch` 包起來
 3. RWD => 因為對 CSS 不熟，所以這方面花了點時間，可是還沒做得很好，google 到的答案通常也都不知道到底對不對  
 
 
