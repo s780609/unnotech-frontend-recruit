@@ -39,15 +39,16 @@ export default {
     pageTypeProperty: String,
     bookIdProperty: String,
   },
-  setup(props, { emit }) {
+  setup(props) {
     const router = useRouter();
 
     const pageType = ref(props.pageTypeProperty);
     const bookId = ref(props.bookIdProperty);
-    const title = ref(props.titleProperty);
+    const title = ref(
+      props.titleProperty ? props.titleProperty : "{{書籍名稱}}"
+    );
 
     const handleAdd = () => {
-      emit("add", "add");
       router.push("/add");
     };
 
@@ -56,7 +57,7 @@ export default {
     };
 
     const handleBack = () => {
-      if (pageType.value.toString() === "edit") {
+      if (pageType.value && pageType.value.toString() === "edit") {
         router.push(`/detail/${bookId.value}`);
       } else {
         router.push(`/`);
@@ -64,7 +65,7 @@ export default {
     };
 
     onBeforeUpdate(() => {
-      title.value = props.titleProperty;
+      title.value = props.titleProperty ? props.titleProperty : "{{書籍名稱}}";
     });
 
     return {

@@ -37,10 +37,6 @@ export default {
     const pageType = ref("list");
     const books = reactive([]);
 
-    async function add(value) {
-      console.log("add", value);
-    }
-
     async function getBooks() {
       books.value = await common.getBooks();
     }
@@ -53,7 +49,6 @@ export default {
       pageType,
       bookListTitle,
       books,
-      add,
     };
   },
 };

@@ -1,5 +1,8 @@
 <template>
-  <HeaderComponent v-bind:titleProperty="add"></HeaderComponent>
+  <HeaderComponent
+    v-bind:titleProperty="headerTitle"
+    :pageTypeProperty="pageType"
+  ></HeaderComponent>
   <div style="background-color: #d3d3d3">
     <b-container style="background-color: #d3d3d3">
       <b-card
@@ -47,11 +50,11 @@
           <br />
           <b-input-group
             size="lg"
-            style="background-color: white; border: transparent;height: 10rem"
+            style="background-color: white; border: transparent; height: 10rem"
           >
             <template #prepend>
               <b-input-group-text
-                style="background-color: white; border: transparent;"
+                style="background-color: white; border: transparent"
                 >備註</b-input-group-text
               >
             </template>
@@ -82,9 +85,12 @@
 import { ref } from "@vue/reactivity";
 import HeaderComponent from "../components/HeaderComponent";
 
+import { common } from "../lib/common.js";
+
 export default {
   name: "AddPage",
   setup() {
+    const pageType = ref("add");
     const bookTitle = ref();
     const bookAuthor = ref();
     const bookDescription = ref();
@@ -96,28 +102,16 @@ export default {
       }
 
       try {
-        const response = await fetch(
-          "https://fe-interview-api.unnotech.com/books/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: `author=${bookAuthor.value}&title=${bookTitle.value}&description=${bookDescription.value}`,
-          }
-        );
-
-        if (response) {
-          const jsonResult = await response.json();
-          if (jsonResult) {
-            alert("新增成功");
-          }
-        } else {
-          throw new Error(await response.text());
+        const jsonResult = await common.postBook({
+          title: bookTitle,
+          author: bookAuthor,
+          descryption: bookDescription,
+        });
+        if (jsonResult) {
+          alert("新增成功");
         }
       } catch (error) {
         console.error(error);
-        alert(error.msg);
       }
     };
 
@@ -138,7 +132,8 @@ export default {
     }
 
     return {
-      add: "新增書本",
+      pageType,
+      headerTitle: "新增書本",
       bookTitle,
       bookAuthor,
       bookDescription,
