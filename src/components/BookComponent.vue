@@ -1,7 +1,8 @@
 <template>
   <button class="bookCardButton" @click="toBookDetailPage">
-    <b-card :title="title" img-src="" class="bookCard">
+    <b-card :title="title" class="bookCard">
       <b-card-body>
+        <b-card-img :src="img"></b-card-img>
         <b-card-text>
           {{ author }}
         </b-card-text>
@@ -27,6 +28,7 @@ export default {
     const title = reactive(props.book.title);
     const author = reactive(props.book.author);
     const description = ref(props.book.description);
+    const img = ref(props.book.image);
 
     function toBookDetailPage() {
       router.push(`/detail/${props.book.id}`);
@@ -35,13 +37,13 @@ export default {
     onMounted(() => {
       if (props.book.description) {
         if (props.book.description.length > 250) {
-          description.value = props.book.description.substring(0, 150);
+          description.value = props.book.description.substring(0, 200);
           description.value += "...";
         }
       }
     });
 
-    return { title, author, description, id, toBookDetailPage };
+    return { title, author, description, img, id, toBookDetailPage };
   },
 };
 </script>
@@ -49,7 +51,7 @@ export default {
 <style scoped>
 .bookCard {
   width: 20rem;
-  height: 25rem;
+  height: 30rem;
   text-align: center;
   background-color: white;
   margin: 0rem auto;
@@ -60,7 +62,7 @@ export default {
 
 .bookCardButton {
   width: 20rem;
-  height: 25rem;
+  height: 30rem;
   text-align: center;
   background-color: white;
   margin: 0.5rem;
