@@ -1,7 +1,7 @@
 # unnotech-frontend-recruit
 ## 專案說明
 專案是用 `Vue CLI` 的 `vue create [project name]` 指令 建立的，版本為3.0，preset 為預設  
-用 `Vue CLI` 建立的原因是單純想說比較快，因為我也對 `Vue` 不熟，如果一個一個裝，裝 `vue`、`babel`、`webpack`，光這三個還有設定，我大概三天是用不完的，因為平常還上班
+用 `Vue CLI` 建立的原因是單純想說比較快，因為我也一段時間沒摸 `Vue`，之前也只有用大約4個月 ，如果一個一個裝，裝 `vue`、`babel`、`webpack`，光這三個還有設定，我大概三天是用不完的，因為平常還上班😢
 
 ## Local端開發執行
 請先用`CMD`把 git repo 拉下來
@@ -19,7 +19,7 @@ cd unnotech-frontend-recruit
 npm install
 ```
 
-然後可以執行開發環境
+然後可以執行開發環境 🚀 
 ```
 npm run serve
 ```
@@ -61,18 +61,21 @@ const routes = [
 * HeaderComponent => 用來幫忙產生頁面最上面的 header
 
 ## 使用套件以及原因
-* `bootstrap` => 因為對這個UI套件最簡單，資源也最好找，而且自己刻CSS很累
-* `bootstrap-vue-3` => 為了快速配合 Vue 使用
+* `bootstrap` => 因為對這個UI套件最簡單，資源也最好找，而且自己刻CSS很累，對bootstrap的理解就是她是純CSS並以class name 為基礎的UI函式庫
+* `bootstrap-vue-3` => 為了快速配合 Vue 使用，這套是可以幫我們把 boostreap 變成對應的component
 * `vue-router` => 為了方便切換頁面，本來是想使用 `window.hashChange()` 之類的 JS 原生語法來自己實作切換頁面，不過想想 還是用別人寫好的好了，比較快，也不容易出錯
 * `Google fonts` => 因為懶得自己去刻 返回 和 編輯 的 按鈕，所以使用這個icon (https://fonts.google.com/icons)
 
 
 ## 遇到的困難以及如何解決
 1. `Vue3` 的 `ref()` 和 `reactive()` 一開始搞不太清楚，後來看到[ref vs reactive in Vue 3?][1]，才比較理解這兩者區別
-2. 因為我是統一用 common.js(自己寫的)來對API請求，所以在做錯誤處理的時候，在想應該怎麼做比較好，後來是統一用 `console.error(error);`，然後都用 `try catch` 包起來
-3. RWD => 因為對 CSS 不熟，所以這方面花了點時間，可是還沒做得很好，google 到的答案通常也都不知道到底對不對  
+2. 後來在 v-bind 和 v-model 
+3. 因為我是統一用 common.js(自己寫的)來對API請求，所以在做錯誤處理的時候，在想應該怎麼做比較好，後來是統一用 `console.error(error);`，然後都用 `try catch` 包起來
+4. RWD => 因為對 CSS 不熟，所以這方面花了點時間，可是還沒做得很好，google 到的答案通常也都不知道到底對不對  
 
-
+## 心得
+這個題目還蠻有趣的，順便我也學一下`Vue3`怎麼使用，而且自己也有了一個完整CRUD的`Vue3`的專案，以後自己忘記也可以回來看，當作自己寫的一個範例😎  
+🎉Happy coding
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
