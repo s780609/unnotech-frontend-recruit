@@ -22,7 +22,7 @@ import { ref, reactive, onMounted } from "vue";
 import HeaderComponent from "../components/HeaderComponent";
 import BookComponent from "../components/BookComponent";
 
-import { common } from "../lib/common.js";
+import common from "../lib/common.js";
 
 export default {
   name: "HomePage",

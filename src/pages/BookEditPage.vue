@@ -4,7 +4,7 @@
     :bookIdProperty="id"
     v-bind:titleProperty="title"
   ></HeaderComponent>
-  <div style="background-color: #d3d3d3;">
+  <div style="background-color: #d3d3d3">
     <b-container style="background-color: #d3d3d3">
       <b-card
         style="
@@ -105,7 +105,7 @@ import { useRoute, useRouter } from "vue-router";
 
 import HeaderComponent from "../components/HeaderComponent.vue";
 
-import { common } from "../lib/common.js";
+import common from "../lib/common.js";
 
 export default {
   name: "BookEditPage",
@@ -166,7 +166,7 @@ export default {
       description,
       imageUrl,
       patchBookById,
-      cancel
+      cancel,
     };
   },
   components: {

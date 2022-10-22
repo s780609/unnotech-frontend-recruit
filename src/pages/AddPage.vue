@@ -104,7 +104,7 @@ import { ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import HeaderComponent from "../components/HeaderComponent";
 
-import { common } from "../lib/common.js";
+import common from "../lib/common.js";
 
 export default {
   name: "AddPage",

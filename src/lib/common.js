@@ -1,4 +1,4 @@
-export const common = {
+const common = {
   url: process.env.VUE_APP_API_ENDPOINT,
   async getBookInfoById(bookId) {
     try {
@@ -81,3 +81,5 @@ export const common = {
     }
   },
 };
+
+export default common;

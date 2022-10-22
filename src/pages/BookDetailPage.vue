@@ -4,7 +4,7 @@
     :bookIdProperty="id"
     v-bind:titleProperty="title"
   ></HeaderComponent>
-  <div style="background-color: #d3d3d3;">
+  <div style="background-color: #d3d3d3">
     <b-container style="background-color: #d3d3d3">
       <b-card
         style="
@@ -98,7 +98,7 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import HeaderComponent from "../components/HeaderComponent";
 
-import { common } from "../lib/common";
+import common from "../lib/common";
 
 export default {
   name: "AddPage",
