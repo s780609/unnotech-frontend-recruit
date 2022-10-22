@@ -32,13 +32,13 @@ npm run serve
 用來放資源
 2. components  
 自製Vue元件  
-📌 命名方式一律 Pascal case，並以 Component 結尾
+📌 命名方式一律 **Pascal case**，並以 **Component** 結尾
 3. lib  
 共用功能的JS，主要都是用來幫我請求 API  
-📌 命名方式一律 Camel case
+📌 命名方式一律 **Camel case**
 4. pages  
 頁面Vue元件，對應 path  
-📌 命名方式一律 Pascal case，並以 Page 結尾
+📌 命名方式一律 **Pascal case**，並以 **Page** 結尾
 
 圖示   
 ![Imgur](https://i.imgur.com/bVJztlm.png)
@@ -64,11 +64,14 @@ const routes = [
 * HeaderComponent => 用來幫忙產生頁面最上面的 header
 
 ## 使用套件以及原因
-* `bootstrap` => 因為對這個UI套件最簡單，資源也最好找，而且自己刻CSS很累，對bootstrap的理解就是她是純CSS並以class name 為基礎的UI函式庫
-* `bootstrap-vue-3` => 為了快速配合 Vue 使用，這套是可以幫我們把 boostreap 變成對應的component
-* `vue-router` => 為了方便切換頁面，本來是想使用 `window.hashChange()` 之類的 JS 原生語法來自己實作切換頁面，不過想想 還是用別人寫好的好了，比較快，也不容易出錯
-* `Google fonts` => 因為懶得自己去刻 返回 和 編輯 的 按鈕，所以使用這個icon (https://fonts.google.com/icons)
-
+### `bootstrap` 
+因為對這個UI套件最簡單，資源也最好找，而且自己刻CSS很累，對bootstrap的理解就是她是純CSS並以class name 為基礎的UI函式庫
+### `bootstrap-vue-3`
+為了快速配合 Vue 使用，這套是可以幫我們把 boostreap 變成對應的component
+### `vue-router` 
+為了方便切換頁面，本來是想使用 `window.hashChange()` 之類的 JS 原生語法來自己實作切換頁面，不過想想 還是用別人寫好的好了，比較快，也不容易出錯
+### `Google fonts`
+因為懶得自己去刻 返回 和 編輯 的 按鈕，所以使用這套icon (https://fonts.google.com/icons)
 
 ## 遇到的困難以及如何解決
 1. `Vue3` 的 `ref()` 和 `reactive()` 一開始搞不太清楚，後來看到[ref vs reactive in Vue 3?][1]，才比較理解這兩者區別
