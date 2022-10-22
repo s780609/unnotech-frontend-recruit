@@ -31,11 +31,14 @@ npm run serve
 1. assets  
 用來放資源
 2. components  
-自製Vue元件，命名方式一律 Pascal case，並以 Component 結尾
+自製Vue元件  
+📌 命名方式一律 Pascal case，並以 Component 結尾
 3. lib  
-共用功能的JS，主要都是用來幫我請求 API，命名方式一律 Camel case
+共用功能的JS，主要都是用來幫我請求 API  
+📌 命名方式一律 Camel case
 4. pages  
-頁面Vue元件，對應 path，命名方式一律 Pascal case，並以 Page 結尾
+頁面Vue元件，對應 path  
+📌 命名方式一律 Pascal case，並以 Page 結尾
 
 圖示   
 ![Imgur](https://i.imgur.com/bVJztlm.png)
