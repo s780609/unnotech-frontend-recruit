@@ -42,7 +42,7 @@ export const common = {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: `author=${body.title}&title=${body.author}&description=${body.descryption}&image=${body.image}`,
+          body: `author=${body.author}&title=${body.title}&description=${body.descryption}&image=${body.image}`,
         }
       );
 

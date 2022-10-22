@@ -2,7 +2,6 @@
   <HeaderComponent
     :pageTypeProperty="pageType"
     v-bind:titleProperty="bookListTitle"
-    v-on:add="add"
   ></HeaderComponent>
   <div class="content">
     <b-container>
@@ -11,6 +10,7 @@
           v-for="book in books.value"
           :key="book.id"
           :book="book"
+          v-on:getBooks="getBooks"
         ></BookComponent>
       </div>
     </b-container>
@@ -38,6 +38,7 @@ export default {
     const books = reactive([]);
 
     async function getBooks() {
+      console.log("getBooks");
       books.value = await common.getBooks();
     }
 
@@ -49,6 +50,7 @@ export default {
       pageType,
       bookListTitle,
       books,
+      getBooks,
     };
   },
 };
