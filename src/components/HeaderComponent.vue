@@ -103,6 +103,7 @@ export default {
 
 .detail {
   float: right;
+  color: blue;
   margin: 1vh 0 0 0;
   cursor: pointer;
   font-size: 2.5rem;
