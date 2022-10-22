@@ -65,6 +65,22 @@
             ></b-form-textarea>
           </b-input-group>
           <br />
+          <b-input-group
+            size="lg"
+            style="background-color: white; border: transparent"
+          >
+            <template #prepend>
+              <b-input-group-text
+                style="background-color: white; border: transparent"
+                >圖片url</b-input-group-text
+              >
+            </template>
+            <b-form-input
+              style="background-color: white; border: transparent"
+              v-model="imageUrl"
+            ></b-form-input>
+          </b-input-group>
+          <br />
           <div>
             <b-button style="border-radius: 2rem; width: 43%; float: left"
               >取消</b-button
@@ -83,7 +99,7 @@
 </template>
 <script>
 import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 import HeaderComponent from "../components/HeaderComponent.vue";
 
@@ -93,12 +109,14 @@ export default {
   name: "BookEditPage",
   setup() {
     const route = useRoute();
+    const router = useRouter();
 
     const pageType = ref("edit");
     const id = ref();
     const title = ref("{{書籍名稱}}");
     const author = ref();
     const description = ref();
+    const imageUrl = ref();
 
     let defaultId = undefined;
     if (route.path) {
@@ -113,6 +131,7 @@ export default {
       title.value = bookInfo.title;
       author.value = bookInfo.author;
       description.value = bookInfo.description;
+      imageUrl.value = bookInfo.image;
     }
 
     async function patchBookById() {
@@ -120,10 +139,12 @@ export default {
         title: title.value,
         author: author.value,
         description: description.value,
+        image: imageUrl.value
       });
 
       if (response) {
         alert("修改成功");
+        router.push(`/detail/${id.value}`);
       }
     }
 
@@ -137,6 +158,7 @@ export default {
       title,
       author,
       description,
+      imageUrl,
       patchBookById,
     };
   },

@@ -4,14 +4,14 @@
     :bookIdProperty="id"
     v-bind:titleProperty="title"
   ></HeaderComponent>
-  <div style="background-color: #d3d3d3">
+  <div style="background-color: #d3d3d3; height:120vh">
     <b-container style="background-color: #d3d3d3">
       <b-card
         style="
           background-color: #d3d3d3;
           border: transparent;
-          width: 30rem;
-          height: 50rem;
+          width: 80vw;
+          height: 90vh;
           float: none;
           margin: 0 auto;
         "
@@ -68,7 +68,25 @@
             ></b-form-textarea>
           </b-input-group>
           <br />
+          <b-input-group
+            size="lg"
+            style="background-color: white; border: transparent"
+          >
+            <template #prepend>
+              <b-input-group-text
+                style="background-color: white; border: transparent"
+                >圖片url</b-input-group-text
+              >
+            </template>
+            <b-form-input
+              readonly
+              style="background-color: white; border: transparent"
+              v-model="imageUrl"
+            ></b-form-input>
+          </b-input-group>
+          <br />
         </b-card-body>
+        <b-card-img :src="imageUrl"></b-card-img>
       </b-card>
     </b-container>
   </div>
@@ -92,6 +110,7 @@ export default {
     const title = ref("{{書籍名稱}}");
     const author = ref();
     const description = ref();
+    const imageUrl = ref();
 
     let defaultId = undefined;
     if (route.path) {
@@ -106,6 +125,7 @@ export default {
         title.value = bookInfo.title;
         author.value = bookInfo.author;
         description.value = bookInfo.description;
+        imageUrl.value = bookInfo.image;
       } else {
         console.log(`bookInfo is undefined`);
       }
@@ -120,6 +140,7 @@ export default {
       id: id,
       title: title,
       author: author,
+      imageUrl: imageUrl,
       description: description,
     };
   },
