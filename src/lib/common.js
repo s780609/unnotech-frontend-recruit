@@ -1,9 +1,8 @@
 export const common = {
+  url: process.env.VUE_APP_API_ENDPOINT,
   async getBookInfoById(bookId) {
     try {
-      const response = await fetch(
-        `https://fe-interview-api.unnotech.com/books/${bookId}/`
-      );
+      const response = await fetch(`${this.url}/books/${bookId}/`);
 
       if (response) {
         return await response.json();
@@ -14,9 +13,7 @@ export const common = {
   },
   async getBooks() {
     try {
-      const response = await fetch(
-        "https://fe-interview-api.unnotech.com/books"
-      );
+      const response = await fetch(`${this.url}/books`);
       if (response) {
         return await response.json();
       }
@@ -35,16 +32,13 @@ export const common = {
     }
 
     try {
-      const response = await fetch(
-        "https://fe-interview-api.unnotech.com/books/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: `author=${body.author}&title=${body.title}&description=${body.descryption}&image=${body.image}`,
-        }
-      );
+      const response = await fetch(`${this.url}/books/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `author=${body.author}&title=${body.title}&description=${body.descryption}&image=${body.image}`,
+      });
 
       if (response) {
         return await response.json();
@@ -57,17 +51,14 @@ export const common = {
   },
   async patchBookById(bookId, body) {
     try {
-      const response = await fetch(
-        `https://fe-interview-api.unnotech.com/books/${bookId}/`,
-        {
-          method: "PATCH",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await fetch(`${this.url}/books/${bookId}/`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
 
       if (response) {
         return await response.json();
@@ -78,12 +69,9 @@ export const common = {
   },
   async deleteBookById(bookId) {
     try {
-      const response = await fetch(
-        `https://fe-interview-api.unnotech.com/books/${bookId}/`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${this.url}/books/${bookId}/`, {
+        method: "DELETE",
+      });
 
       if (response) {
         return await response.json();

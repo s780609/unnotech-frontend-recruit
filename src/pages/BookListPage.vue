@@ -38,7 +38,6 @@ export default {
     const books = reactive([]);
 
     async function getBooks() {
-      console.log("getBooks");
       books.value = await common.getBooks();
     }
 
