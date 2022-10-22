@@ -42,7 +42,7 @@ export const common = {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: `author=${body.title.value}&title=${body.author.value}&description=${body.descryption.value}`,
+          body: `author=${body.title}&title=${body.author}&description=${body.descryption}&image=${body.image}`,
         }
       );
 
@@ -66,6 +66,22 @@ export const common = {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(body),
+        }
+      );
+
+      if (response) {
+        return await response.json();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async deleteBookById(bookId) {
+    try {
+      const response = await fetch(
+        `https://fe-interview-api.unnotech.com/books/${bookId}/`,
+        {
+          method: "DELETE",
         }
       );
 

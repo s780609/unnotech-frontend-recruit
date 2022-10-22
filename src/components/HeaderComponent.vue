@@ -84,7 +84,7 @@ export default {
 <style scoped>
 .header {
   background-color: white;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
@@ -97,7 +97,7 @@ export default {
   color: blue;
   margin: 1vh 0 0 0;
   cursor: pointer;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .detail {

@@ -64,6 +64,22 @@
             ></b-form-textarea>
           </b-input-group>
           <br />
+          <b-input-group
+            size="lg"
+            style="background-color: white; border: transparent"
+          >
+            <template #prepend>
+              <b-input-group-text
+                style="background-color: white; border: transparent"
+                >圖片url</b-input-group-text
+              >
+            </template>
+            <b-form-input
+              style="background-color: white; border: transparent"
+              v-model="imageUrl"
+            ></b-form-input>
+          </b-input-group>
+          <br />
           <div>
             <b-button style="border-radius: 2rem; width: 43%; float: left"
               >取消</b-button
@@ -94,6 +110,7 @@ export default {
     const bookTitle = ref();
     const bookAuthor = ref();
     const bookDescription = ref();
+    const imageUrl = ref();
 
     const postData = async () => {
       if (!checkTitle(bookTitle.value) || !checkAuthor(bookAuthor.value)) {
@@ -103,9 +120,10 @@ export default {
 
       try {
         const jsonResult = await common.postBook({
-          title: bookTitle,
-          author: bookAuthor,
-          descryption: bookDescription,
+          title: bookTitle.value,
+          author: bookAuthor.value,
+          descryption: bookDescription.value,
+          image: imageUrl.value,
         });
         if (jsonResult) {
           alert("新增成功");
@@ -137,6 +155,7 @@ export default {
       bookTitle,
       bookAuthor,
       bookDescription,
+      imageUrl,
       postData,
     };
   },
