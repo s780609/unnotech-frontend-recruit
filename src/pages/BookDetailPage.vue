@@ -4,14 +4,14 @@
     :bookIdProperty="id"
     v-bind:titleProperty="title"
   ></HeaderComponent>
-  <div style="background-color: #d3d3d3; height:120vh">
+  <div style="background-color: #d3d3d3;">
     <b-container style="background-color: #d3d3d3">
       <b-card
         style="
           background-color: #d3d3d3;
           border: transparent;
-          width: 80vw;
-          height: 90vh;
+          width: 80%;
+          height: 90%;
           float: none;
           margin: 0 auto;
         "

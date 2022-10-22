@@ -4,14 +4,14 @@
     :bookIdProperty="id"
     v-bind:titleProperty="title"
   ></HeaderComponent>
-  <div style="background-color: #d3d3d3; height: 120vh">
+  <div style="background-color: #d3d3d3;">
     <b-container style="background-color: #d3d3d3">
       <b-card
         style="
           background-color: #d3d3d3;
           border: transparent;
-          width: 80vw;
-          height: 90vh;
+          width: 80%;
+          height: 90%;
           float: none;
           margin: 0 auto;
         "
@@ -82,7 +82,9 @@
           </b-input-group>
           <br />
           <div>
-            <b-button style="border-radius: 2rem; width: 43%; float: left"
+            <b-button
+              style="border-radius: 2rem; width: 43%; float: left"
+              v-on:click="cancel"
               >取消</b-button
             >&nbsp;
             <b-button
@@ -148,6 +150,10 @@ export default {
       }
     }
 
+    const cancel = () => {
+      alert("尚未實作");
+    };
+
     onMounted(() => {
       getBookInfoById(id.value);
     });
@@ -160,6 +166,7 @@ export default {
       description,
       imageUrl,
       patchBookById,
+      cancel
     };
   },
   components: {

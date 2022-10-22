@@ -85,6 +85,7 @@ export default {
 .header {
   background-color: white;
   font-size: 2.5rem;
+  width: 100%;
   text-align: center;
 }
 

@@ -9,8 +9,8 @@
         style="
           background-color: #d3d3d3;
           border: transparent;
-          width: 30rem;
-          height: 50rem;
+          width: 80%;
+          height: 90%;
           float: none;
           margin: 0 auto;
         "
@@ -81,7 +81,9 @@
           </b-input-group>
           <br />
           <div>
-            <b-button style="border-radius: 2rem; width: 43%; float: left"
+            <b-button
+              style="border-radius: 2rem; width: 43%; float: left"
+              v-on:click="cancel"
               >取消</b-button
             >&nbsp;
             <b-button
@@ -99,6 +101,7 @@
 
 <script>
 import { ref } from "@vue/reactivity";
+import { useRouter } from "vue-router";
 import HeaderComponent from "../components/HeaderComponent";
 
 import { common } from "../lib/common.js";
@@ -106,6 +109,8 @@ import { common } from "../lib/common.js";
 export default {
   name: "AddPage",
   setup() {
+    const router = useRouter();
+
     const pageType = ref("add");
     const bookTitle = ref();
     const bookAuthor = ref();
@@ -127,10 +132,15 @@ export default {
         });
         if (jsonResult) {
           alert("新增成功");
+          router.push(`/detail/${jsonResult.id}`);
         }
       } catch (error) {
         console.error(error);
       }
+    };
+
+    const cancel = () => {
+      alert("尚未實作");
     };
 
     function checkTitle(title) {
@@ -157,6 +167,7 @@ export default {
       bookDescription,
       imageUrl,
       postData,
+      cancel,
     };
   },
   components: {
