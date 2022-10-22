@@ -27,7 +27,6 @@ export default {
     const description = reactive(props.book.description);
 
     function toBookDetailPage (){
-      console.log("toBookDetailPage");
       router.push(`/detail/${props.book.id}`);
     }
 

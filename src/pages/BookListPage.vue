@@ -6,14 +6,7 @@
   ></HeaderComponent>
   <div class="content">
     <b-container>
-      <div
-        style="
-          max-width: 60rem;
-          text-align: center;
-          display: flex;
-          flex-wrap: wrap;
-        "
-      >
+      <div class="wrap">
         <BookComponent
           v-for="book in books.value"
           :key="book.id"
@@ -24,10 +17,12 @@
   </div>
 </template>
 <script>
-import { ref, reactive, onBeforeUpdate } from "vue";
+import { ref, reactive, onMounted } from "vue";
 
 import HeaderComponent from "../components/HeaderComponent";
 import BookComponent from "../components/BookComponent";
+
+import { common } from "../lib/common.js";
 
 export default {
   name: "HomePage",
@@ -47,24 +42,11 @@ export default {
     }
 
     async function getBooks() {
-      try {
-        const response = await fetch(
-          "https://fe-interview-api.unnotech.com/books"
-        );
-        if (response) {
-          books.value = await response.json();
-          console.log(books.value);
-        }
-      } catch (error) {
-        console.error(error);
-        alert(error.message);
-      }
+      books.value = await common.getBooks();
     }
 
-    getBooks();
-
-    onBeforeUpdate(() => {
-      console.log("onBeforeUpdate");
+    onMounted(() => {
+      getBooks();
     });
 
     return {
@@ -81,5 +63,13 @@ export default {
 <style scoped>
 .content {
   background-color: #d3d3d3;
+}
+
+.wrap {
+  max-width: 60rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 </style>

@@ -1,12 +1,29 @@
 <template>
   <div class="header">
-    <span v-if="pageType !== 'list'" class="back" v-on:click="handleBack"
-      >back</span
+    <span
+      v-if="pageType !== 'list' && pageType !== 'edit'"
+      class="material-symbols-outlined back"
+      v-on:click="handleBack"
+      >arrow_back_ios_new</span
     >
-    {{ title }}
-    <span v-if="pageType === 'list'" class="add" v-on:click="handleAdd">+</span>
-    <span v-if="pageType === 'detail'" class="detail" v-on:click="handleEdit"
-      >Edit</span
+    <span
+      v-if="pageType === 'edit'"
+      class="material-symbols-outlined back"
+      v-on:click="handleBack"
+      >arrow_back_ios_new</span
+    >
+    <span clss="title">{{ title }}</span>
+    <span
+      v-if="pageType === 'list'"
+      class="material-symbols-outlined add"
+      v-on:click="handleAdd"
+      >add</span
+    >
+    <span
+      v-if="pageType === 'detail'"
+      v-on:click="handleEdit"
+      class="material-symbols-outlined detail"
+      >edit</span
     >
   </div>
 </template>
@@ -25,9 +42,10 @@ export default {
   setup(props, { emit }) {
     const router = useRouter();
 
+    const pageType = ref(props.pageTypeProperty);
     const bookId = ref(props.bookIdProperty);
     const title = ref(props.titleProperty);
-    
+
     const handleAdd = () => {
       emit("add", "add");
       router.push("/add");
@@ -38,7 +56,11 @@ export default {
     };
 
     const handleBack = () => {
-      router.push("/");
+      if (pageType.value.toString() === "edit") {
+        router.push(`/detail/${bookId.value}`);
+      } else {
+        router.push(`/`);
+      }
     };
 
     onBeforeUpdate(() => {
@@ -46,7 +68,7 @@ export default {
     });
 
     return {
-      pageType: props.pageTypeProperty,
+      pageType,
       bookId,
       title,
       handleAdd,
@@ -65,21 +87,29 @@ export default {
   text-align: center;
 }
 
+.title {
+  font-size: 0.5rem;
+}
+
 .add {
   float: right;
-  margin-right: 10%;
   color: blue;
+  margin: 1vh 0 0 0;
   cursor: pointer;
+  font-size: 3rem;
 }
 
 .detail {
   float: right;
-  margin-right: 10%;
+  margin: 1vh 0 0 0;
   cursor: pointer;
+  font-size: 2.5rem;
 }
 
 .back {
   float: left;
+  margin: 1vh 0 0 0;
   cursor: pointer;
+  font-size: 2.5rem;
 }
 </style>

@@ -102,10 +102,13 @@ export default {
 
     async function getBookInfoById(bookId) {
       const bookInfo = await common.getBookInfoById(bookId);
-      console.log(bookInfo);
-      title.value = bookInfo.title;
-      author.value = bookInfo.author;
-      description.value = bookInfo.description;
+      if (bookInfo) {
+        title.value = bookInfo.title;
+        author.value = bookInfo.author;
+        description.value = bookInfo.description;
+      } else {
+        console.log(`bookInfo is undefined`);
+      }
     }
 
     onMounted(() => {
