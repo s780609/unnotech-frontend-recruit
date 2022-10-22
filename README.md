@@ -47,7 +47,17 @@ npm run serve
 放 favicon 和 靜態index.html
 
 ### .env (環境變數)
-用來設定環境變數，目前只有一個 請求用API的endpoint
+用來設定環境變數，目前只有一個 請求用API的endpoint  
+📌 環境變數的命名方式必須要以 `VUE_APP_` 為開頭像這樣
+```javascript
+VUE_APP_MY_ENV_VARIABLE=value
+VUE_APP_ANOTHER_VARIABLE=value
+```
+要在 client side 取用 .env 設定的變數, 
+範例:
+```javascript
+process.env.VUE_APP_API_ENDPOINT
+```
 ## 邏輯說明
 程式進入點是 `main.js`，這裡會設定 route 和 import 所需要的 css 和 第三方套件
 而 `App.vue` 基本只有一個 `<router-view>` 只負責頁面切換，和 `material icons` 的 CDN  
