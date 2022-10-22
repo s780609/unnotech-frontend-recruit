@@ -1,18 +1,20 @@
 <template>
   <button class="bookCardButton" @click="toBookDetailPage">
-    <b-card :title="title" class="bookCard">
-      <b-card-text>
-        {{ author }}
-      </b-card-text>
-      <b-card-text>
-        {{ description }}
-      </b-card-text>
+    <b-card :title="title" img-src="" class="bookCard">
+      <b-card-body>
+        <b-card-text>
+          {{ author }}
+        </b-card-text>
+        <b-card-text>
+          {{ description }}
+        </b-card-text>
+      </b-card-body>
     </b-card>
   </button>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
@@ -24,11 +26,20 @@ export default {
     const id = ref(props.book.id);
     const title = reactive(props.book.title);
     const author = reactive(props.book.author);
-    const description = reactive(props.book.description);
+    const description = ref(props.book.description);
 
-    function toBookDetailPage (){
+    function toBookDetailPage() {
       router.push(`/detail/${props.book.id}`);
     }
+
+    onMounted(() => {
+      if (props.book.description) {
+        if (props.book.description.length > 250) {
+          description.value = props.book.description.substring(0, 150);
+          description.value += "...";
+        }
+      }
+    });
 
     return { title, author, description, id, toBookDetailPage };
   },
@@ -36,16 +47,6 @@ export default {
 </script>
 
 <style scoped>
-.book {
-  width: 20rem;
-  height: 25rem;
-  text-align: center;
-  background-color: white;
-  margin: 0.5rem;
-  padding: 0;
-  flex: 1 0 40%;
-}
-
 .bookCard {
   width: 20rem;
   height: 25rem;
