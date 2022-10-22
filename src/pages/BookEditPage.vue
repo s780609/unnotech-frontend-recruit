@@ -4,14 +4,14 @@
     :bookIdProperty="id"
     v-bind:titleProperty="title"
   ></HeaderComponent>
-  <div style="background-color: #d3d3d3">
+  <div style="background-color: #d3d3d3; height: 120vh">
     <b-container style="background-color: #d3d3d3">
       <b-card
         style="
           background-color: #d3d3d3;
           border: transparent;
-          width: 30rem;
-          height: 50rem;
+          width: 80vw;
+          height: 90vh;
           float: none;
           margin: 0 auto;
         "
@@ -139,7 +139,7 @@ export default {
         title: title.value,
         author: author.value,
         description: description.value,
-        image: imageUrl.value
+        image: imageUrl.value,
       });
 
       if (response) {
