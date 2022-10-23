@@ -68,7 +68,7 @@ export default {
         }
       }
 
-      if (!img.value) {
+      if (!img.value || img.value === "undefined") {
         img.value = defaultImage;
       }
     });
@@ -127,7 +127,7 @@ export default {
   max-height: 20vh;
 }
 
-.author{
+.author {
   font-size: 1.5vw;
   min-height: 2vh;
 }
