@@ -1,8 +1,8 @@
 const common = {
-  url: process.env.VUE_APP_API_ENDPOINT,
+  apiEndpoint: process.env.VUE_APP_API_ENDPOINT,
   async getBookInfoById(bookId) {
     try {
-      const response = await fetch(`${this.url}/books/${bookId}/`);
+      const response = await fetch(`${this.apiEndpoint}/books/${bookId}/`);
 
       if (response) {
         return await response.json();
@@ -13,7 +13,7 @@ const common = {
   },
   async getBooks() {
     try {
-      const response = await fetch(`${this.url}/books`);
+      const response = await fetch(`${this.apiEndpoint}/books`);
       if (response) {
         return await response.json();
       }
@@ -32,7 +32,7 @@ const common = {
     }
 
     try {
-      const response = await fetch(`${this.url}/books/`, {
+      const response = await fetch(`${this.apiEndpoint}/books/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -51,7 +51,7 @@ const common = {
   },
   async patchBookById(bookId, body) {
     try {
-      const response = await fetch(`${this.url}/books/${bookId}/`, {
+      const response = await fetch(`${this.apiEndpoint}/books/${bookId}/`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -69,7 +69,7 @@ const common = {
   },
   async deleteBookById(bookId) {
     try {
-      const response = await fetch(`${this.url}/books/${bookId}/`, {
+      const response = await fetch(`${this.apiEndpoint}/books/${bookId}/`, {
         method: "DELETE",
       });
 
@@ -79,6 +79,10 @@ const common = {
     } catch (error) {
       console.error(error);
     }
+  },
+  getDefaultImgLink() {
+    console.log(process.env.BASE_URL);
+    return `${process.env.BASE_URL}/${process.env.VUE_APP_DEFAULT_JPG}`;
   },
 };
 

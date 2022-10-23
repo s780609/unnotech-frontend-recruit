@@ -5,12 +5,12 @@
         delete
       </span>
       <template #header>
-        <h4 class="mb-0">{{ title }}</h4>
+        <div class="mb-0">{{ title }}</div>
       </template>
-      <b-card-img :src="img" top style="width: 60%"></b-card-img>
+      <b-card-img :src="img" top class="img"></b-card-img>
       <b-card-body>
         <b-card-text> 作者: {{ author }} </b-card-text>
-        <b-card-text> {{ description }} </b-card-text>
+        <b-card-text class="description"> {{ description }} </b-card-text>
       </b-card-body>
     </b-card>
   </div>
@@ -20,7 +20,9 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
-import { common } from "../lib/common.js";
+import common from "../lib/common.js";
+
+import defaultImage from "../assets/default.jpg";
 
 export default {
   name: "BookComponent",
@@ -52,11 +54,22 @@ export default {
     }
 
     onMounted(() => {
-      if (props.book.description) {
-        if (props.book.description.length > 50) {
-          description.value = props.book.description.substring(0, 30);
+      if (description.value) {
+        if (description.value.length > 30) {
+          description.value = description.value.substring(0, 25);
           description.value += "...";
         }
+      }
+
+      if (title.value) {
+        if (title.value.length > 15) {
+          title.value = title.value.substring(0, 10);
+          title.value += "...";
+        }
+      }
+
+      if (!img.value) {
+        img.value = defaultImage;
       }
     });
 
@@ -75,20 +88,24 @@ export default {
 
 <style scoped>
 .bookDiv {
+  max-width: 50%;
+  width: 50%;
   height: 100%;
   flex: 1 0 45%;
   text-align: center;
   margin: 0.5rem;
+  flex: 1 0 40%;
 }
 
 .bookCardButton {
-  width: 20rem;
-  min-height: 25rem;
+  width: 100%;
+  min-height: 30vh;
   height: 100%;
-  max-height: 30rem;
+  max-height: 45vh;
+  font-size: 1.5vw;
   background-color: white;
   margin: 0rem auto;
-  flex: 1 0 40%;
+  /* flex: 1 0 40%; */
   border: transparent;
   cursor: pointer;
 }
@@ -96,6 +113,15 @@ export default {
 .bookCardButton:hover {
   box-shadow: 0px 0px 10px 10px grey;
   transition-duration: 0.5s;
+}
+
+.description {
+  font-size: 1vw;
+}
+
+.img {
+  width: 60%;
+  max-height: 20vh;
 }
 
 .deleteIcon {
