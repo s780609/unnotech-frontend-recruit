@@ -9,7 +9,7 @@
       </template>
       <b-card-img :src="img" top class="img"></b-card-img>
       <b-card-body>
-        <b-card-text> 作者: {{ author }} </b-card-text>
+        <b-card-text class="author"> 作者: {{ author }} </b-card-text>
         <b-card-text class="description"> {{ description }} </b-card-text>
       </b-card-body>
     </b-card>
@@ -88,7 +88,7 @@ export default {
 
 <style scoped>
 .bookDiv {
-  max-width: 50%;
+  max-width: 48%;
   width: 50%;
   height: 100%;
   flex: 1 0 45%;
@@ -117,11 +117,19 @@ export default {
 
 .description {
   font-size: 1vw;
+  min-height: 15vh;
+  max-height: 20vh;
 }
 
 .img {
   width: 60%;
+  min-height: 10vh;
   max-height: 20vh;
+}
+
+.author{
+  font-size: 1.5vw;
+  min-height: 2vh;
 }
 
 .deleteIcon {
