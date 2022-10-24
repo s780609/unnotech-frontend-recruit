@@ -92,9 +92,8 @@ const routes = [
 [Material icon][6]
 ## 遇到的困難以及如何解決
 1. `Vue3` 的 `ref()` 和 `reactive()` 一開始搞不太清楚，後來看[Vue文件][2]和[ref vs reactive in Vue 3?][1]，才比較理解這兩者區別
-2. 後來在 v-bind 和 v-model 
-3. 因為我是統一用 common.js(自己寫的)來對API請求，所以在做錯誤處理的時候，在想應該怎麼做比較好，後來是統一用 `console.error(error);`，然後都用 `try catch` 包起來
-4. RWD => 因為對 CSS 不熟，所以這方面花了點時間，可是還沒做得很好，google 到的答案通常也都不知道到底對不對  
+2. 因為我是統一用 common.js(自己寫的)來對API請求，所以在做錯誤處理的時候，在想應該怎麼做比較好，後來是統一用 `console.error(error);`，然後都用 `try catch` 包起來
+3. RWD => 因為對 CSS 不熟，所以這方面花了點時間，可是還沒做得很好，google 到的答案通常也都不知道到底對不對  
 
 ### 其他問題
 發現其實 API 是有`image`的參數可以用的，可以放一串URL進去，然後我看到的是博客來的😆，所以後來就自己加了照片用的位置給 Book Card 和 其他 頁面
